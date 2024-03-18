@@ -17,13 +17,14 @@
         require_once('dbconfig.php');
         $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
 
-        $query = "INSERT INTO `person` (id, name, email, phone, current_work, dob, city, country, batch, passwd) VALUES ('$id', '$name', '$email', '$phone', '$current_work', '$dob', '$city', '$country', '$batch', '$password')";
+        $query = "INSERT INTO person (id, name, email, phone, current_work, dob, city, country, batch, passwd) VALUES ('$id', '$name', '$email', '$phone', '$current_work', '$dob', '$city', '$country', '$batch', '$password')";
 
 
         $result = mysqli_query($connect, $query);
 
         if ($result) {
             echo "Registration successful!";
+            echo "<p><a href=login.html>Login</a>";
         } else {
             echo "Registration failed!";
 

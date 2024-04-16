@@ -1,3 +1,14 @@
+<?php
+
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        $id = $_GET["id"];
+        require_once('dbconfig.php');
+        $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
+
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,36 +92,54 @@
 <body>
     <div class="container">
         <div class="form-container">
-            <h2>Create Account</h2>
-            <form action="register.php" method="POST">
-                <input type="text" name="id" placeholder="Student ID" required>
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="text" name="phone" placeholder="Phone" required>
-                <input type="text" name="current_work" placeholder="Current Work" required>
-                <input type="date" name="dob" placeholder="Date of Birth" required>
-                
-                <select name="country" required>
-                    <option value="" disabled selected>Select Country</option>
-                    <option value="1">Bangladesh</option>
-                    <option value="2">India</option>
-                    <option value="3">Pakistan</option>
+            <h2>Club Registration Form</h2>
+            <form action="register_club.php" method="POST">
+                <input type="text" name="person_id" value="<?php echo $id; ?>" readonly style="display: none;">
+
+                <select name="club" required>
+                    <option value="" disabled selected>Club</option>
+                    <option value="1">Robotics Club</option>
+                    <option value="2">Computer Club</option>
+                    <option value="3">App Forum</option>
                     <!-- Add more options as needed -->
                 </select>
 
-                <select name="city" required>
-                    <option value="" disabled selected>Select City</option>
-                    <option value="1">Dhaka</option>
-                    <option value="2">Khulna</option>
-                    <option value="5">Barishal</option>
+                <select name="club_position" required>
+                    <option value="" disabled selected>Position</option>
+                    <option value="1">President</option>
+                    <option value="2">Vice President</option>
+                    <option value="3">General Secretary</option>
+                    <option value="4">Treasurer</option>
+                    <option value="5">Secretary, Research and Development</option>
+                    <option value="6">Secretary, Event Management</option>
+                    <option value="7">Secretary, Branding and promotion</option>
+                    <option value="8">Secretary, Public Relations</option>
+                    <option value="9">Secretary, Graphic Designs</option>
+                    <option value="10">Joint Secretary, Research and Development</option>
+                    <option value="11">Joint Secretary, Event Management</option>
+                    <option value="12">Joint Secretary, Branding and Promotions</option>
+                    <option value="13">Webmaster</option>
+                    <option value="14">Consultant, Technical</option>
+                    <option value="15">Executive, Research and Development</option>
+                </select>
+
+                </select>
+
+                <select name="sessions" required>
+                    <option value="" disabled selected>Session</option>
+                    <option value="1">sept. 2019 - sept. 2020</option>
+                    <option value="2">sept. 2020 - sept. 2021</option>
+                    <option value="3">sept. 2021 - sept. 2022</option>
+                    <option value="4">sept. 2022 - sept. 2023</option>
+                    <option value="5">sept. 2023 - sept. 2024</option>
                     <!-- Add more options as needed -->
                 </select>
 
-                <input type="text" name="batch" placeholder="Batch" required>
-                <input type="password" name="password" placeholder="Password" required>
                 <button type="submit">Submit</button>
             </form>
         </div>
     </div>
 </body>
 </html>
+
+

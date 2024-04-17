@@ -1,7 +1,5 @@
 <?php
 
-include("session.php");
-
 require_once('dbconfig.php');
 $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
 
@@ -135,6 +133,14 @@ if (isset($_GET['id'])) {
                     <i class="fa fa-plus"></i>&nbsp;Friends
                 </a>
             </span>
+
+            <br> <br>
+            <span>
+                <a href="clubs.php" class="border px-3 p-1 add-experience">
+                    <i class="fa fa-plus"></i>&nbsp;Explore Clubs
+                </a>
+            </span>
+
         </div>
     </div>
 </div>

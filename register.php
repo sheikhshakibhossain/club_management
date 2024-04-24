@@ -24,7 +24,9 @@
 
         if ($result) {
             echo "Registration successful!";
-            echo "<p><a href=login.html>Login</a>";
+            // echo "<p><a href=login.html>Login</a>";
+            header("Location: login.html");
+            exit();
         } else {
             echo "Registration failed!";
 

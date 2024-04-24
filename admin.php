@@ -1,36 +1,34 @@
 <?php
-require_once('dbconfig.php');
-$connect = mysqli_connect(HOST, USER, PASS, DB) or die("Could not connect to the database");
+    require_once('dbconfig.php');
+    $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Could not connect to the database");
 
-// Fetch user details if ID is provided
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    include("session.php");
+    $id = $_SESSION['admin_id'];
     $results = mysqli_query($connect, "SELECT * FROM person WHERE id = '$id'")
         or die("Could not execute query");
     while ($rows = mysqli_fetch_array($results)) {
         extract($rows);
     }
-}
 
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['club_name']) && isset($_POST['club_room']) && isset($_POST['description'])) {
-        $club_name = mysqli_real_escape_string($connect, $_POST['club_name']);
-        $club_room = mysqli_real_escape_string($connect, $_POST['club_room']);
-        $description = mysqli_real_escape_string($connect, $_POST['description']);
-        
-        $query = "INSERT INTO club (name, room, description) VALUES ('$club_name', '$club_room', '$description')";
-        $result = mysqli_query($connect, $query);
-        if ($result) {
-            echo "Club added successfully!";
+    // Handle form submission
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['club_name']) && isset($_POST['club_room']) && isset($_POST['description'])) {
+            $club_name = mysqli_real_escape_string($connect, $_POST['club_name']);
+            $club_room = mysqli_real_escape_string($connect, $_POST['club_room']);
+            $description = mysqli_real_escape_string($connect, $_POST['description']);
+            
+            $query = "INSERT INTO club (name, room, description) VALUES ('$club_name', '$club_room', '$description')";
+            $result = mysqli_query($connect, $query);
+            if ($result) {
+                echo "Club added successfully!";
+            } else {
+                echo "Error: " . mysqli_error($connect);
+            }
+            
         } else {
-            echo "Error: " . mysqli_error($connect);
+            echo "All fields are required!";
         }
-        
-    } else {
-        echo "All fields are required!";
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +39,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Admin Portal</title>
     <link rel="stylesheet" href="./assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #BBE2EC; 
+        }
+        .light-red-btn {
+            background-color: #FA7070; 
+            color: #fff; 
+            padding: 8px 12px; 
+            border-radius: 4px; 
+            text-decoration: none; 
+        }
+    </style>
 </head>
 <body>
     <div class="container rounded bg-white mt-5 mb-5">
@@ -51,6 +62,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span class="font-weight-bold"><?php echo $name; ?></span>
                     <span class="text-black-50"><?php echo $email; ?></span>
                 <?php endif; ?>
+
+                <span>
+                    <br>
+                     <a style="left-mergin: 120px"href="logout.php" class="light-red-btn" style="margin-left: 120px;">
+                        <i class="fa fa-plus"></i>&nbsp;Logout
+                    </a>
+                </span>
             </div>
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">

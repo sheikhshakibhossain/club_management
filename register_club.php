@@ -18,7 +18,7 @@
 
         if ($result) {
             echo "Welcome to the club!";
-            header("Location: user.php?id=$person_id"); // redirecting page
+            header("Location: profile.php"); // redirecting page
             exit(); // no further code is executed after the redirection
         } else {
             echo "Club join failed!";

@@ -1,9 +1,10 @@
 <?php
 
+include("session.php");
 require_once('dbconfig.php');
 $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
 
-if (isset($_GET['id'])) {
+if (isset($_GET['id'])  && !empty($_SESSION['user_id'])) {
 
     $id = $_GET['id'];
 
@@ -65,8 +66,16 @@ if (isset($_GET['id'])) {
     }
 
 
+    $friend_id = $id;
+    $person_id = $_SESSION['user_id'];
+
+    $friend_query = mysqli_query($connect, "SELECT count(*) FROM friend WHERE person_id = '$person_id' AND friend_id = '$friend_id'");
+    $friend_count = mysqli_fetch_array($friend_query)[0];
+
+
 } else {
     echo "ID parameter is missing!";
+    header("Location: index.html");
 }
 
 ?>
@@ -80,6 +89,29 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #0D9276; 
+        }
+        .light-red-btn {
+            background-color: #FA7070; 
+            color: #fff; 
+            padding: 8px 30px; 
+            border-radius: 4px; 
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .light-red2-btn {
+            background-color: #FA7070; 
+            color: #fff; 
+            padding: 8px 30px; 
+            border-radius: 4px; 
+            text-decoration: none;
+            margin-left: 270px;
+        }
+    </style>
 
 </head>
 <body>
@@ -135,18 +167,30 @@ if (isset($_GET['id'])) {
                     <?php endif; ?>
 
             </div>
-            <span>
-                <a href="friends.php?id=<?php echo $id; ?>" class="border px-3 p-1 add-experience">
-                    <i class="fa fa-plus"></i>&nbsp;Friends
-                </a>
-            </span>
 
-            <br> <br>
+            <?php if ($friend_count < 1): ?>
             <span>
-                <a href="clubs.php" class="border px-3 p-1 add-experience">
-                    <i class="fa fa-plus"></i>&nbsp;Explore Clubs
+                <a href="add_friend.php"  class="light-red-btn">
+                    <?php 
+                        include("session.php");
+                        $_SESSION['friend_req_id'] = $id;
+                    ?>
+                    <i class="fa fa-plus"></i>&nbsp;Follow
                 </a>
             </span>
+            <?php endif; ?>
+
+            <?php if ($friend_count > 0): ?>
+            <span>
+                <a href="remove_friend.php"  class="light-red2-btn">
+                    <?php 
+                        include("session.php");
+                        $_SESSION['friend_req_id'] = $id;
+                    ?>
+                    <i class="fa fa-plus"></i>&nbsp;Unfollow
+                </a>
+            </span>
+            <?php endif; ?>
 
         </div>
     </div>

@@ -98,6 +98,12 @@
         }
 
     </style>
+
+    <style>
+        body {
+            background-color: #9AD0C2; 
+        }
+    </style>
 </head>
 <body>
 

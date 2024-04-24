@@ -12,8 +12,10 @@
         $count = mysqli_fetch_array($result)[0];
 
         if ($count >= 1) {
+            include("session.php");
+            $_SESSION['admin_id'] = $username;
             echo "Login Success!";
-            header("Location: admin.php?id=$username"); // redirecting page
+            header("Location: admin.php"); // redirecting page
             exit(); // no further code is executed after the redirection
         } else {
             echo "Login failed!";

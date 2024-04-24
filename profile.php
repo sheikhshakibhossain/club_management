@@ -5,8 +5,6 @@ include("session.php");
 require_once('dbconfig.php');
 $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
 
-// if (isset($_GET['id'])) {
-    // $id = $_GET['id'];
     $id = $_SESSION['user_id'];
 
     $results = mysqli_query($connect, "SELECT * FROM person WHERE id = '$id'")
@@ -65,12 +63,6 @@ $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
     if ($row = mysqli_fetch_assoc($mentor_query)) {
         $mentor_name = $row['name'];
     }
-
-
-// } else {
-//     echo "ID parameter is missing!";
-// }
-
 ?>
 
 
@@ -82,6 +74,27 @@ $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #CCD3CA; 
+        }
+        .light-purple-btn {
+            background-color: #BC7FCD; 
+            color: #fff; 
+            padding: 8px 12px;
+            border-radius: 4px; 
+            text-decoration: none; 
+        }
+        .light-red-btn {
+            background-color: #FA7070; 
+            color: #fff; 
+            padding: 8px 12px; 
+            border-radius: 4px; 
+            text-decoration: none; 
+        }
+    </style>
+
 
 </head>
 <body>
@@ -137,18 +150,25 @@ $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
                     <?php endif; ?>
 
             </div>
-            <span>
-                <a href="friends.php?id=<?php echo $id; ?>" class="border px-3 p-1 add-experience">
-                    <i class="fa fa-plus"></i>&nbsp;Friends
-                </a>
-            </span>
 
-            <br> <br>
-            <span>
-                <a href="clubs.php" class="border px-3 p-1 add-experience">
-                    <i class="fa fa-plus"></i>&nbsp;Explore Clubs
-                </a>
-            </span>
+
+<span>
+    <a href="friends.php" class="light-purple-btn">
+        <i class="fa fa-plus"></i>&nbsp;Friends
+    </a>
+</span>
+
+<br> <br>
+<span>
+    <a href="clubs.php" class="light-purple-btn">
+        <i class="fa fa-plus"></i>&nbsp;Explore Clubs
+    </a>
+    
+    <a href="logout.php" class="light-red-btn" style="margin-left: 120px;">
+        <i class="fa fa-plus"></i>&nbsp;Logout
+    </a>
+</span>
+
 
         </div>
     </div>

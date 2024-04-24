@@ -17,6 +17,9 @@
     } else {
         echo "Error in Database";
     }
+
+    include("session.php");
+    $_SESSION['recently_visited_club_id'] = $club_id;
 ?>
 
 <!DOCTYPE html>
@@ -102,6 +105,12 @@
             .user {
                 width: 100%;
             }
+        }
+    </style>
+
+    <style>
+        body {
+            background-color: #C6EBC5; 
         }
     </style>
 </head>

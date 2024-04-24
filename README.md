@@ -1,11 +1,16 @@
 # club_management
 
 
+## Setup
 ```bash
+sudo chown -R $USER:$USER /opt/lampp/htdocs/club_management/
+sudo chmod -R 777 /opt/lampp/htdocs/club_management/uploads/
+sudo touch /opt/lampp/php/php.ini
 
-INSERT INTO person (id, name, email, phone, current_work, dob, city, country, batch, passwd) VALUES ('011221036', 'Saif Al Shad', 'saif@gmail.com', '019231233', 'Student', '2001-01-10', '3', '1', '201', '1234');
-
-INSERT INTO members_info (person_id, sessions, club, club_position) VALUES ('011221036', '4', '3', '3')
+# put the lines inside php.ini and restart xampp
+file_uploads = On
+upload_max_filesize = 32M
+post_max_size = 32M
 
 
 ```

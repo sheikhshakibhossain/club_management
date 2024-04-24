@@ -6,6 +6,7 @@ require_once('dbconfig.php');
 $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
 
     $id = $_SESSION['user_id'];
+    $profile_picture = $id . '.jpg';
 
     $results = mysqli_query($connect, "SELECT * FROM person WHERE id = '$id'")
         or die("Can not execute query");
@@ -108,7 +109,7 @@ $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <!-- <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"> -->
                 <!-- <img class="rounded-circle mt-5" width="150px" src="assets/logo.png"> -->
-                <img class="rounded-circle mt-5" width="150px" src="assets/logo.jpg">
+                <img class="rounded-circle mt-5" width="150px" src="uploads/<?php echo $profile_picture; ?>">
                 <span class="font-weight-bold"><?php echo $name; ?></span>
                 <span class="text-black-50"><?php echo $email; ?></span>
             </div>

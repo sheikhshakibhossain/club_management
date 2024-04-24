@@ -1,10 +1,14 @@
 <?php
 
 include("session.php");
+if (empty($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
+}
 require_once('dbconfig.php');
 $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
 
-if (isset($_GET['id'])  && !empty($_SESSION['user_id'])) {
+if (isset($_GET['id'])) {
 
     $id = $_GET['id'];
     
@@ -82,7 +86,7 @@ if (isset($_GET['id'])  && !empty($_SESSION['user_id'])) {
 
 } else {
     echo "ID parameter is missing!";
-    header("Location: index.html");
+    header("Location: index.php");
 }
 
 ?>
@@ -164,14 +168,7 @@ if (isset($_GET['id'])  && !empty($_SESSION['user_id'])) {
                     <span>
                         <h4 class="text-right"><?php echo "Member of $club_name";?></h4>
                     </span>
-                </div><br>
-                <?php if (!empty($club_position) && !empty($session_name)): ?>
-                    <div class="col-md-12"><label class="labels">Position: </label><?php echo $club_position; ?></div>
-                    <div class="col-md-12"><label class="labels">Active Session: </label><?php echo $session_name; ?></div> <br>
-                    <div class="col-md-12"><label class="labels">Mentor: </label><?php echo $mentor_name; ?></div>
-                    <?php else: ?>
-                        <div class="col-md-12"><label class="labels">You are not a member. </label> <a href="join_club.php?id=<?php echo $id; ?>"> Join a Club!</a></div>
-                    <?php endif; ?>
+                </div>
 
             </div>
 

@@ -1,7 +1,11 @@
 <?php
 
-    require_once('dbconfig.php');
     include("session.php");
+    if (empty($_SESSION['user_id'])) {
+        header("Location: index.php");
+        exit();
+    }
+    require_once('dbconfig.php');
 
     $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
     

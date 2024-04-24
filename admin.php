@@ -1,8 +1,14 @@
 <?php
+
+    include("session.php");
+    if (empty($_SESSION['user_id'])) {
+        header("Location: index.php");
+        exit();
+    }
+    
     require_once('dbconfig.php');
     $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Could not connect to the database");
 
-    include("session.php");
     $id = $_SESSION['admin_id'];
     $results = mysqli_query($connect, "SELECT * FROM person WHERE id = '$id'")
         or die("Could not execute query");

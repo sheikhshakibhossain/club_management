@@ -1,5 +1,11 @@
 <?php
 
+    include("session.php");
+    if (empty($_SESSION['user_id'])) {
+        header("Location: index.php");
+        exit();
+    }
+
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $id = $_GET["id"];
         require_once('dbconfig.php');

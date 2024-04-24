@@ -1,9 +1,13 @@
 <?php
 
-include("session.php");
+    include("session.php");
+    if (empty($_SESSION['user_id'])) {
+        header("Location: index.php");
+        exit();
+    }
 
-require_once('dbconfig.php');
-$connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
+    require_once('dbconfig.php');
+    $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
 
     $id = $_SESSION['user_id'];
     $profile_picture = $id . '.jpg';
@@ -93,6 +97,13 @@ $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
             border-radius: 4px; 
             text-decoration: none; 
         }
+        .light-green-btn {
+            background-color: #4F6F52; 
+            color: #fff; 
+            padding: 8px 12px;
+            border-radius: 4px; 
+            text-decoration: none; 
+        }
         .light-red-btn {
             background-color: #FA7070; 
             color: #fff; 
@@ -160,15 +171,19 @@ $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
 
 
 <span>
-    <a href="friends.php" class="light-purple-btn">
+    <a href="friends.php" class="light-green-btn">
         <i class="fa fa-plus"></i>&nbsp;Friends
+    </a>
+
+    <a href="clubs.php" class="light-green-btn" style="margin-left: 100px;">
+        <i class="fa fa-plus"></i>&nbsp;Explore Clubs
     </a>
 </span>
 
 <br> <br>
 <span>
-    <a href="clubs.php" class="light-purple-btn">
-        <i class="fa fa-plus"></i>&nbsp;Explore Clubs
+    <a href="newbie.php" class="light-purple-btn">
+        <i class="fa fa-plus"></i>&nbsp;Vagabond
     </a>
     
     <a href="logout.php" class="light-red-btn" style="margin-left: 120px;">

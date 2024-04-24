@@ -1,6 +1,11 @@
 <?php
 
     include("session.php");
+    if (empty($_SESSION['user_id'])) {
+        header("Location: index.php");
+        exit();
+    }
+    
     require_once('dbconfig.php');
 
     $friend_id = $_SESSION['friend_req_id'];

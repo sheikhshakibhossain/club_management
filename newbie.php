@@ -5,26 +5,21 @@
         header("Location: index.php");
         exit();
     }
-    
-    if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        $club_id = $_GET["id"];
-        require_once('dbconfig.php');
-        $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
-        // people of same club
-        // SELECT person_id FROM members_info WHERE members_info.club = (SELECT club FROM members_info WHERE person_id = '011221031')
-        $results = mysqli_query($connect, "SELECT person_id FROM members_info WHERE members_info.club = $club_id")
-            or die("Can not execute query");
-        
-        $friends = [];
-        while ($rows = mysqli_fetch_array($results)) {
-            extract($rows);
-            $friends[] = $person_id;
-        }
-        // echo "success";
-    } else {
-        echo "Error in Database";
-    }
 
+    require_once('dbconfig.php');
+    $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
+    
+    $results = mysqli_query($connect, "SELECT person.id FROM person WHERE person.id NOT IN (SELECT members_info.person_id FROM members_info)")
+        or die("Can not execute query");
+    
+    $newbie = [];
+    while ($rows = mysqli_fetch_array($results)) {
+        extract($rows);
+        $newbie[] = $id;
+    }
+   
+
+    include("session.php");
     $_SESSION['recently_visited_club_id'] = $club_id;
 ?>
 
@@ -33,7 +28,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet the Members</title>
+    <title>newbies</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500" rel="stylesheet">
     <style>
         body {
@@ -116,28 +111,28 @@
 
     <style>
         body {
-            background-color: #C6EBC5; 
+            background-color: #E1F7F5; 
         }
     </style>
 </head>
 <body>
 
 <div id="container">
-    <h2>Meet the Members</h2>
+    <h2>People from no clubs</h2>
     <?php
     // Loop through each friend ID and fetch their details
-    foreach ($friends as $friend_id) {
+    foreach ($newbie as $newbie_id) {
         // Execute SQL query to fetch name, phone, email, and current work of the friend
-        $friend_query = mysqli_query($connect, "SELECT name, phone, email, current_work FROM person WHERE id = '$friend_id'");
+        $friend_query = mysqli_query($connect, "SELECT name, phone, email, current_work FROM person WHERE id = '$newbie_id'");
         $friend_data = mysqli_fetch_assoc($friend_query);
         
         if ($club_id != 4 && $club_id != 5) {
             // SELECT club_position.name FROM club_position WHERE club_position.id = (SELECT members_info.club_position FROM members_info WHERE members_info.person_id = '011221031')
-            $club_position_query = mysqli_query($connect, "SELECT club_position.name FROM club_position WHERE club_position.id = (SELECT members_info.club_position FROM members_info WHERE members_info.person_id = '$friend_id')");
+            $club_position_query = mysqli_query($connect, "SELECT club_position.name FROM club_position WHERE club_position.id = (SELECT members_info.club_position FROM members_info WHERE members_info.person_id = '$newbie_id')");
             $club_position_data = mysqli_fetch_assoc($club_position_query);
         }
     ?>
-    <a href="user.php?id=<?php echo $friend_id; ?>" class="user">
+    <a href="user.php?id=<?php echo $newbie_id; ?>" class="user">
         <p class="name"><?php echo $friend_data['name']; ?></p>
         <p class="email"><?php echo $friend_data['phone']; ?></p>
         <p class="email"><?php echo $friend_data['email']; ?></p>

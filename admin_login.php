@@ -19,7 +19,7 @@
             exit(); // no further code is executed after the redirection
         } else {
             echo "Login failed!";
-            echo "<p><a href='index.html'>Return home</a></p>";
+            echo "<p><a href='index.php'>Return home</a></p>";
         }
     }
 ?>

@@ -1,3 +1,11 @@
+<?php
+    include("session.php");
+    // session_destroy();
+    if (!empty($_SESSION['user_id'])) {
+        header("Location: profile.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

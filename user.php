@@ -38,6 +38,14 @@ if (isset($_GET['id'])) {
         $club_position = $row['name'];
     }
 
+    $club_name_query = mysqli_query($connect, "SELECT name FROM club WHERE club.id = (SELECT members_info.club FROM members_info WHERE person_id = '$id')")
+    or die("Can not execute club position query");
+        
+    $club_name = "";
+    if ($row = mysqli_fetch_assoc($club_name_query)) {
+        $club_name = $row['name'];
+    }
+
 
     
     $session_query = mysqli_query($connect, "SELECT session.name FROM members_info left JOIN session on members_info.sessions = session.id WHERE members_info.person_id = '$id'")
@@ -116,7 +124,7 @@ if (isset($_GET['id'])) {
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center experience">
                     <span>
-                        <h4 class="text-right">Club Info</h4>
+                        <h4 class="text-right"><?php echo "Member of $club_name";?></h4>
                     </span>
                 </div><br>
                 <?php if (!empty($club_position) && !empty($session_name)): ?>

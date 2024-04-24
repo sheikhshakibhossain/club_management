@@ -1,4 +1,7 @@
 <?php
+
+    include ("session.php");
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -12,8 +15,9 @@
         $count = mysqli_fetch_array($result)[0];
 
         if ($count >= 1) {
+            $_SESSION['user_id'] = $username;
             echo "Login Success!";
-            header("Location: user.php?id=$username"); // redirecting page
+            header("Location: profile.php"); // redirecting page
             exit(); // no further code is executed after the redirection
         } else {
             echo "Login failed!";

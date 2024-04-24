@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 24, 2024 at 09:32 PM
+-- Generation Time: Apr 24, 2024 at 11:49 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -247,7 +247,17 @@ INSERT INTO `friend` (`id`, `person_id`, `friend_id`) VALUES
 (26, '011221045', '011221031'),
 (27, '011221031', '011221032'),
 (30, '0212230096', '112'),
-(31, '011221031', '0212230096');
+(31, '011221031', '0212230096'),
+(32, '011221031', '011221036'),
+(33, '011221031', '111'),
+(34, '011221031', '011221232'),
+(36, '111', '011221031'),
+(37, '111', '011183040'),
+(38, '111', '011191101'),
+(39, '111', '011191001'),
+(40, '011221600', '011221031'),
+(41, '011221600', '011191101'),
+(42, '011221031', '011221600');
 
 -- --------------------------------------------------------
 
@@ -288,7 +298,9 @@ INSERT INTO `members_info` (`id`, `person_id`, `sessions`, `club_mentor`, `club`
 (21, '011221215', 5, NULL, 4, 1, NULL),
 (22, '011201470', 5, NULL, 1, 13, NULL),
 (23, '011221045', 2, NULL, 5, 17, NULL),
-(24, '0212230096', 5, NULL, 6, 1, NULL);
+(24, '0212230096', 5, NULL, 6, 1, NULL),
+(25, '011203069', 5, NULL, 4, 11, NULL),
+(26, '011221600', 4, NULL, 1, 9, NULL);
 
 -- --------------------------------------------------------
 
@@ -330,6 +342,7 @@ INSERT INTO `person` (`id`, `name`, `email`, `address`, `phone`, `current_work`,
 ('011221049', 'Sauda Binti Noor', 'snoor221049@bscse.uiu.ac.bd', NULL, '0188728134', 'Student', '2002-02-01', 1, 1, 201, '1234'),
 ('011221215', 'Ahmed Jebail Shoukhin', 'ashoukhin221215@bscse.uiu.ac.bd', NULL, '01705989994', 'student', '2001-12-10', 2, 1, 221, '12345678'),
 ('011221232', 'Mehrab', 'mehrab009@gmail.com', NULL, '01696969', 'Student', '1900-03-01', 1, 1, 221, '6969'),
+('011221600', 'MD BAYZID UDDIN MIAH', 'mmiah221600@bscse.uiu.ac.bd', NULL, '01765626913', 'Designer at UMRT', '2002-11-24', 1, 1, 221, 'fukku01'),
 ('0112230999', 'MD. Salman Kabir Chowdhury', 'salmankabirchowdhury@gmail.com', NULL, '01826637595', 'UMRT Kamla', '2003-03-16', 1, 1, 223, '12345678'),
 ('021201001', 'Gabriel Gomez', 'gab@gmail.com', NULL, '0199990367', 'Student', '1998-11-22', 2, 1, 201, '1234'),
 ('0212230096', 'MD. ZahirulIslam', 'mislam223096@bseee.uiu.ac.bd', NULL, '01580849902', 'Student', '2001-12-10', 1, 1, 223, '12345678'),
@@ -485,13 +498,13 @@ ALTER TABLE `country`
 -- AUTO_INCREMENT for table `friend`
 --
 ALTER TABLE `friend`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `members_info`
 --
 ALTER TABLE `members_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `session`

@@ -30,6 +30,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>newbies</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
@@ -126,18 +128,21 @@
         $friend_query = mysqli_query($connect, "SELECT name, phone, email, current_work FROM person WHERE id = '$newbie_id'");
         $friend_data = mysqli_fetch_assoc($friend_query);
         
-        if ($club_id != 4 && $club_id != 5) {
-            // SELECT club_position.name FROM club_position WHERE club_position.id = (SELECT members_info.club_position FROM members_info WHERE members_info.person_id = '011221031')
-            $club_position_query = mysqli_query($connect, "SELECT club_position.name FROM club_position WHERE club_position.id = (SELECT members_info.club_position FROM members_info WHERE members_info.person_id = '$newbie_id')");
-            $club_position_data = mysqli_fetch_assoc($club_position_query);
-        }
     ?>
-    <a href="user.php?id=<?php echo $newbie_id; ?>" class="user">
+
+    <a href="user.php?id=<?php echo $friend_id; ?>" class="user">
+        <?php 
+            $profile_picture = 'uploads/' . $friend_id . '.jpg';
+            if (!file_exists($profile_picture)) {
+                $num = $id % 6;
+                $profile_picture = 'assets/avatar/' . $num . '.png';
+            }
+        ?>
+        <img class="rounded-circle mt-3" width="150px" src="<?php echo $profile_picture; ?>">
         <p class="name"><?php echo $friend_data['name']; ?></p>
         <p class="email"><?php echo $friend_data['phone']; ?></p>
         <p class="email"><?php echo $friend_data['email']; ?></p>
         <p class="address"><?php echo $friend_data['current_work']; ?></p>
-        <p class="location"><?php echo $club_position_data['name']; ?></p>
     </a>
     <?php
     }

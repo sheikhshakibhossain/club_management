@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Join a Club</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -101,7 +101,10 @@
                     <option value="1">Robotics Club</option>
                     <option value="2">Computer Club</option>
                     <option value="3">App Forum</option>
-                    <!-- Add more options as needed -->
+                    <option value="4">Sports Club</option>
+                    <option value="5">Cultural Club</option>
+                    <option value="6">UIU ELECTRICAL & ELECTRONICS CLUB</option>
+                    
                 </select>
 
                 <select name="club_position" required>
@@ -121,6 +124,9 @@
                     <option value="13">Webmaster</option>
                     <option value="14">Consultant, Technical</option>
                     <option value="15">Executive, Research and Development</option>
+                    <option value="16">Mentor</option>
+                    <option value="17">General Member</option>
+                    
                 </select>
 
                 </select>

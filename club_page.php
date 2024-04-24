@@ -3,16 +3,19 @@
         $club_id = $_GET["id"];
         require_once('dbconfig.php');
         $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
-    }
-    // people of same club
-    // SELECT person_id FROM members_info WHERE members_info.club = (SELECT club FROM members_info WHERE person_id = '011221031')
-    $results = mysqli_query($connect, "SELECT person_id FROM members_info WHERE members_info.club = $club_id")
-        or die("Can not execute query");
-    
-    $friends = [];
-    while ($rows = mysqli_fetch_array($results)) {
-        extract($rows);
-        $friends[] = $person_id;
+        // people of same club
+        // SELECT person_id FROM members_info WHERE members_info.club = (SELECT club FROM members_info WHERE person_id = '011221031')
+        $results = mysqli_query($connect, "SELECT person_id FROM members_info WHERE members_info.club = $club_id")
+            or die("Can not execute query");
+        
+        $friends = [];
+        while ($rows = mysqli_fetch_array($results)) {
+            extract($rows);
+            $friends[] = $person_id;
+        }
+        // echo "success";
+    } else {
+        echo "Error in Database";
     }
 ?>
 
@@ -112,10 +115,12 @@
         // Execute SQL query to fetch name, phone, email, and current work of the friend
         $friend_query = mysqli_query($connect, "SELECT name, phone, email, current_work FROM person WHERE id = '$friend_id'");
         $friend_data = mysqli_fetch_assoc($friend_query);
-
-        // SELECT club_position.name FROM club_position WHERE club_position.id = (SELECT members_info.club_position FROM members_info WHERE members_info.person_id = '011221031')
-        $club_position_query = mysqli_query($connect, "SELECT club_position.name FROM club_position WHERE club_position.id = (SELECT members_info.club_position FROM members_info WHERE members_info.person_id = '$friend_id')");
-        $club_position_data = mysqli_fetch_assoc($club_position_query);
+        
+        if ($club_id != 4 && $club_id != 5) {
+            // SELECT club_position.name FROM club_position WHERE club_position.id = (SELECT members_info.club_position FROM members_info WHERE members_info.person_id = '011221031')
+            $club_position_query = mysqli_query($connect, "SELECT club_position.name FROM club_position WHERE club_position.id = (SELECT members_info.club_position FROM members_info WHERE members_info.person_id = '$friend_id')");
+            $club_position_data = mysqli_fetch_assoc($club_position_query);
+        }
     ?>
     <a href="user.php?id=<?php echo $friend_id; ?>" class="user">
         <p class="name"><?php echo $friend_data['name']; ?></p>

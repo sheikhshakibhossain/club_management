@@ -1,7 +1,7 @@
 <?php
 
     include("session.php");
-    if (empty($_SESSION['user_id'])) {
+    if (empty($_SESSION['admin_id'])) {
         header("Location: index.php");
         exit();
     }
@@ -18,7 +18,15 @@
 
     // Handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if(isset($_POST['club_name']) && isset($_POST['club_room']) && isset($_POST['description'])) {
+        $club_name = mysqli_real_escape_string($connect, $_POST['club_name']);
+        $club_check_query = mysqli_query($connect, "SELECT COUNT(*) FROM club WHERE name = '$club_name'") 
+            or die("Could not execute query");
+        $club_check_status = mysqli_fetch_array($club_check_query)[0]; 
+
+
+        if ($club_check_status > 0) {
+            echo "club exists";
+        } else if(isset($_POST['club_name']) && isset($_POST['club_room']) && isset($_POST['description'])) {
             $club_name = mysqli_real_escape_string($connect, $_POST['club_name']);
             $club_room = mysqli_real_escape_string($connect, $_POST['club_room']);
             $description = mysqli_real_escape_string($connect, $_POST['description']);
@@ -34,6 +42,7 @@
         } else {
             echo "All fields are required!";
         }
+
     }
 ?>
 
@@ -91,6 +100,23 @@
                     </form>
                 </div>
             </div>
+
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Add a Club</h4>
+                    </div>
+                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Club Name</label><input type="text" name="club_name" class="form-control" placeholder="" value=""></div>
+                            <div class="col-md-12"><label class="labels">Club Room</label><input type="text" name="club_room" class="form-control" placeholder="" value=""></div>
+                            <div class="col-md-12"><label class="labels">Description</label><input type="text" name="description" class="form-control" placeholder="" value=""></div>
+                        </div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Club</button></div>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>

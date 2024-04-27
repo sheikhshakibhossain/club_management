@@ -92,6 +92,43 @@
                 </div>
             </div>
 
+
+            <!-- <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Add a Club</h4>
+                    </div>
+                    <form method="POST" action="add_club.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Club Name</label><input type="text" name="club_name" class="form-control" placeholder="" value=""></div>
+                            <div class="col-md-12"><label class="labels">Club Room</label><input type="text" name="club_room" class="form-control" placeholder="" value=""></div>
+                            <div class="col-md-12"><label class="labels">Description</label><input type="text" name="description" class="form-control" placeholder="" value=""></div>
+                        </div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Club</button></div>
+                    </form>
+                </div>
+            </div> -->
+
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Remove a Person</h4>
+                    </div>
+                    <form method="POST" action="remove_person.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Person ID</label>
+                                <input type="text" name="person_id" class="form-control" placeholder="" value="">
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Remove Person</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
         </div>
     </div>
 </body>

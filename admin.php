@@ -59,7 +59,7 @@
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Add a Club</h4>
+                        <h4 class="text-right">Add</h4>
                     </div>
                     <form method="POST" action="add_club.php">
                         <div class="row mt-3">
@@ -67,7 +67,7 @@
                             <div class="col-md-12"><label class="labels">Club Room</label><input type="text" name="club_room" class="form-control" placeholder="" value="" required></div>
                             <div class="col-md-12"><label class="labels">Description</label><input type="text" name="description" class="form-control" placeholder="" value="" required></div>
                         </div>
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Club</button></div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Add Club</button></div>
                     </form>
                 </div>
             </div>
@@ -75,7 +75,7 @@
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Remove a Club</h4>
+                        <h4 class="text-right">Remove</h4>
                     </div>
                     <form method="POST" action="remove_club.php">
                         <div class="row mt-3">
@@ -89,6 +89,7 @@
                         </div>
                     </form>
 
+                    
                     <form method="POST" action="remove_person.php">
                         <div class="row mt-3">
                             <div class="col-md-12">
@@ -107,12 +108,12 @@
             </div>
 
 
-            <!-- <div class="col-md-5 border-right">
+            <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Add a Club</h4>
+                        <h4 class="text-right">Something</h4>
                     </div>
-                    <form method="POST" action="add_club.php">
+                    <form method="POST" action="">
                         <div class="row mt-3">
                             <div class="col-md-12"><label class="labels">Club Name</label><input type="text" name="club_name" class="form-control" placeholder="" value=""></div>
                             <div class="col-md-12"><label class="labels">Club Room</label><input type="text" name="club_room" class="form-control" placeholder="" value=""></div>
@@ -121,7 +122,7 @@
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Club</button></div>
                     </form>
                 </div>
-            </div> -->
+            </div>
 
             <!-- <div class="col-md-5 border-right">
                 <div class="p-3 py-5">

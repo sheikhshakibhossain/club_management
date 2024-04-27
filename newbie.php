@@ -127,12 +127,11 @@
         // Execute SQL query to fetch name, phone, email, and current work of the friend
         $friend_query = mysqli_query($connect, "SELECT name, phone, email, current_work FROM person WHERE id = '$newbie_id'");
         $friend_data = mysqli_fetch_assoc($friend_query);
-        
     ?>
 
-    <a href="user.php?id=<?php echo $friend_id; ?>" class="user">
+    <a href="user.php?id=<?php echo $newbie_id; ?>" class="user">
         <?php 
-            $profile_picture = 'uploads/' . $friend_id . '.jpg';
+            $profile_picture = 'uploads/' . $newbie_id . '.jpg';
             if (!file_exists($profile_picture)) {
                 $num = $id % 6;
                 $profile_picture = 'assets/avatar/' . $num . '.png';

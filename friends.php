@@ -153,7 +153,7 @@
         <?php 
             $profile_picture = 'uploads/' . $friend_id . '.jpg';
             if (!file_exists($profile_picture)) {
-                $num = $id % 6;
+                $num = $friend_id % 6;
                 $profile_picture = 'assets/avatar/' . $num . '.png';
             }
         ?>
@@ -185,7 +185,7 @@
         <?php 
             $profile_picture = 'uploads/' . $friend_id . '.jpg';
             if (!file_exists($profile_picture)) {
-                $num = $id % 6;
+                $num = $friend_id % 6;
                 $profile_picture = 'assets/avatar/' . $num . '.png';
             }
         ?>
@@ -221,7 +221,7 @@
         <?php 
             $profile_picture = 'uploads/' . $friend_id . '.jpg';
             if (!file_exists($profile_picture)) {
-                $num = $id % 6;
+                $num = $friend_id % 6;
                 $profile_picture = 'assets/avatar/' . $num . '.png';
             }
         ?>

@@ -15,6 +15,14 @@
     while ($rows = mysqli_fetch_array($results)) {
         extract($rows);
     }
+
+    $profile_picture = $id . '.jpg';
+
+    $profile_picture = 'uploads/' . $id . '.jpg';
+    if (!file_exists($profile_picture)) {
+        $num = $id % 6;
+        $profile_picture = 'assets/avatar/' . $num . '.png';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +51,7 @@
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img class="rounded-circle mt-5" width="150px" src="assets/logo.jpg">
+                <img class="rounded-circle mt-5" width="150px" src="<?php echo $profile_picture; ?>">
                 <?php if(isset($name) && isset($email)): ?>
                     <span class="font-weight-bold"><?php echo $name; ?></span>
                     <span class="text-black-50"><?php echo $email; ?></span>

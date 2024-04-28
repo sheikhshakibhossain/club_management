@@ -53,6 +53,15 @@
             text-decoration: none;
             border: None; 
         }
+
+        .green-btn {
+            background-color: green; 
+            color: #fff; 
+            padding: 8px 50px; 
+            border-radius: 4px; 
+            text-decoration: none;
+            border: None; 
+        }
     </style>
 </head>
 <body>
@@ -139,7 +148,7 @@
                             </div>
                         </div>
                         <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="submit">Execute</button>
+                            <button class="green-btn" type="submit">Execute</button>
                         </div>
                     </form>
                     

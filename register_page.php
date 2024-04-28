@@ -150,11 +150,27 @@
                             $name = $row['name'];
                             echo "<option value=\"$id\">$name</option>";
                         }
-                ?>
+                    ?>
 
                 </select>
 
-                <input type="text" name="batch" placeholder="Batch" required>
+                <!-- <input type="text" name="batch" placeholder="Batch" required> -->
+                <select name="batch" required>
+                    <option value="" disabled selected>Select Batch</option>
+                    <?php 
+                        require_once('dbconfig.php');
+                        $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
+                        
+                        $query = "SELECT id FROM batch";
+                        $result = mysqli_query($connect, $query);
+
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $id = $row['id'];
+                            echo "<option value=\"$id\">$id</option>";
+                        }
+                    ?>
+
+                </select>
                 <input type="password" name="password" placeholder="Password" required>
 
                 <label for="fileToUpload" class="custom-file-upload">Upload Profile Picture</label>

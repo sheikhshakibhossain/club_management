@@ -122,6 +122,30 @@
                         </div>
                     </form>
 
+                    <form method="POST" action="add_city.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">City Name</label>
+                                <input type="text" name="city_name" class="form-control" placeholder="" value="" required>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Add City</button>
+                        </div>
+                    </form>
+
+                    <form method="POST" action="remove_city.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">City Name</label>
+                                <input type="text" name="city_name" class="form-control" placeholder="" value="" required>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Remove City</button>
+                        </div>
+                    </form>
+
                 </div>
 
 

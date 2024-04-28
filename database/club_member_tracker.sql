@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 24, 2024 at 11:49 PM
+-- Generation Time: Apr 28, 2024 at 09:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -85,7 +85,8 @@ INSERT INTO `city` (`id`, `name`) VALUES
 (5, 'Barishal'),
 (6, 'Jessore'),
 (7, 'Chittaging'),
-(8, 'Rongpur');
+(8, 'Rongpur'),
+(10, 'Gopalganj');
 
 -- --------------------------------------------------------
 
@@ -257,7 +258,9 @@ INSERT INTO `friend` (`id`, `person_id`, `friend_id`) VALUES
 (39, '111', '011191001'),
 (40, '011221600', '011221031'),
 (41, '011221600', '011191101'),
-(42, '011221031', '011221600');
+(42, '011221031', '011221600'),
+(43, '003808', '112'),
+(44, '003808', '011221035');
 
 -- --------------------------------------------------------
 
@@ -300,7 +303,8 @@ INSERT INTO `members_info` (`id`, `person_id`, `sessions`, `club_mentor`, `club`
 (23, '011221045', 2, NULL, 5, 17, NULL),
 (24, '0212230096', 5, NULL, 6, 1, NULL),
 (25, '011203069', 5, NULL, 4, 11, NULL),
-(26, '011221600', 4, NULL, 1, 9, NULL);
+(26, '011221600', 4, NULL, 1, 9, NULL),
+(27, '003808', 5, NULL, 2, 17, NULL);
 
 -- --------------------------------------------------------
 
@@ -327,6 +331,7 @@ CREATE TABLE `person` (
 --
 
 INSERT INTO `person` (`id`, `name`, `email`, `address`, `phone`, `current_work`, `dob`, `city`, `country`, `batch`, `passwd`) VALUES
+('003808', 'Nehan Hossain', 'nehan094@gmail.com', NULL, '01755680817', 'Businessman', '2008-12-22', 1, 1, 241, '2467pee'),
 ('011183040', 'Abdullah Al Masud', 'amasud183040@bscse.uiu.ac.bd', NULL, '0191231213123', 'Student', '0001-01-01', 5, 1, 183, '1234'),
 ('011191001', 'Md, Abid Hossain', 'mhossain191001@bseee.uiu.ac.bd', NULL, '01823131313', 'Student', '2001-01-10', 5, 1, 191, '1234'),
 ('011191101', 'MD Yasin', 'myasin191101@bscse.uiu.ac.bd', NULL, '01863278482', 'Student', '2024-03-18', 2, 1, 191, '1234'),
@@ -337,7 +342,7 @@ INSERT INTO `person` (`id`, `name`, `email`, `address`, `phone`, `current_work`,
 ('011221032', 'Afrina Riana', 'riana@gmail.com', NULL, '019231223', 'Student', '2001-02-10', 1, 1, 201, '1234'),
 ('011221033', 'Tanisha Zaman', 'tanisha@gmail.com', NULL, '019231243', 'Student', '2001-03-10', 1, 1, 201, '1234'),
 ('011221035', 'Razzak', 'razzak@gmail.com', NULL, '01656123416', 'Student', '1998-11-23', 5, 1, 221, '1234'),
-('011221036', 'Saif Al Shad', 'saif@gmail.com', NULL, '019231233', 'Student', '2001-01-10', 3, 1, 201, '1234'),
+('011221036', 'Saif Al Shad', 'sshad221036@bscse.uiu.ac.bd', NULL, '019231233', 'Student', '2001-01-10', 3, 1, 201, '1234'),
 ('011221045', 'Faisal Khan', 'faisal@gmail.com', NULL, '01746462896', 'student', '1999-02-10', 1, 1, 221, '1234'),
 ('011221049', 'Sauda Binti Noor', 'snoor221049@bscse.uiu.ac.bd', NULL, '0188728134', 'Student', '2002-02-01', 1, 1, 201, '1234'),
 ('011221215', 'Ahmed Jebail Shoukhin', 'ashoukhin221215@bscse.uiu.ac.bd', NULL, '01705989994', 'student', '2001-12-10', 2, 1, 221, '12345678'),
@@ -462,13 +467,13 @@ ALTER TABLE `session`
 -- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `club`
 --
 ALTER TABLE `club`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `club_admin`
@@ -486,7 +491,7 @@ ALTER TABLE `club_mentor`
 -- AUTO_INCREMENT for table `club_position`
 --
 ALTER TABLE `club_position`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -498,19 +503,19 @@ ALTER TABLE `country`
 -- AUTO_INCREMENT for table `friend`
 --
 ALTER TABLE `friend`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `members_info`
 --
 ALTER TABLE `members_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `session`
 --
 ALTER TABLE `session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

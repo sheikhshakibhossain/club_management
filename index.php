@@ -61,12 +61,12 @@
         <div class="content">
             <h1>Club Members and Alumni</h1> 
             <br><br><br><br>
-            <h3>Not signed in yet ?</h3>
+            <h3>Not signed up yet ?</h3>
             <div class="button-container">
                 <button onclick="redirectTo('register_page.php')">Create Account</button>
             </div>
             <br><br><br>
-            <h3>Already signed in ?</h3>
+            <h3>Already signed up ?</h3>
             <div class="button-container">
                 <button onclick="redirectTo('login.html')">User</button>
             

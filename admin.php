@@ -94,11 +94,23 @@
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label class="labels">Club Position Title <Title></Title></label>
-                                <input type="text" name="club_position" class="form-control" placeholder="" value="" required>
+                                <input type="text" name="club_position" class="form-control" placeholder="X Executive" value="" required>
                             </div>
                         </div>
                         <div class="mt-5 text-center">
                             <button class="btn btn-primary profile-button" type="submit">Add Position</button>
+                        </div>
+                    </form>
+
+                    <form method="POST" action="add_club_session.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Club Session Title<Title></Title></label>
+                                <input type="text" name="club_session" class="form-control" placeholder="sept. 2024 - sept. 2025" value="" required>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Add Session</button>
                         </div>
                     </form>
 
@@ -159,6 +171,31 @@
                             <button class="btn btn-primary profile-button" type="submit">Remove City</button>
                         </div>
                     </form>
+
+                    <form method="POST" action="remove_club_position.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Club Position Title <Title></Title></label>
+                                <input type="text" name="club_position" class="form-control" placeholder="X Executive" value="" required>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Remove Position</button>
+                        </div>
+                    </form>
+
+                    <form method="POST" action="remove_club_session.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Club Session Title<Title></Title></label>
+                                <input type="text" name="club_session" class="form-control" placeholder="sept. 2024 - sept. 2025" value="" required>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Remove Session</button>
+                        </div>
+                    </form>
+
 
                 </div>
 

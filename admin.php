@@ -45,6 +45,14 @@
             border-radius: 4px; 
             text-decoration: none; 
         }
+        .red-btn {
+            background-color: red; 
+            color: #fff; 
+            padding: 6px 8px; 
+            border-radius: 4px; 
+            text-decoration: none;
+            border: None; 
+        }
     </style>
 </head>
 <body>
@@ -127,7 +135,7 @@
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label class="labels">Raw Query</label>
-                                <input type="text" name="query" class="form-control" placeholder="" value="" required>
+                                <input type="text" name="query" class="form-control" placeholder="SELECT * FROM person" value="" required>
                             </div>
                         </div>
                         <div class="mt-5 text-center">
@@ -143,7 +151,7 @@
                             </div>
                         </div>
                         <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="submit">Remove Club</button>
+                            <button class="red-btn" type="submit">Remove Club</button>
                         </div>
                     </form>
 
@@ -152,11 +160,11 @@
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label class="labels">Person ID</label>
-                                <input type="text" name="person_id" class="form-control" placeholder="" value="" required>
+                                <input type="text" name="person_id" class="form-control" placeholder="Student ID" value="" required>
                             </div>
                         </div>
                         <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="submit">Remove Person</button>
+                            <button class="red-btn" type="submit">Remove Person</button>
                         </div>
                     </form>
 
@@ -168,7 +176,7 @@
                             </div>
                         </div>
                         <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="submit">Remove City</button>
+                            <button class="red-btn" type="submit">Remove City</button>
                         </div>
                     </form>
 
@@ -180,7 +188,7 @@
                             </div>
                         </div>
                         <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="submit">Remove Position</button>
+                            <button class="red-btn" type="submit">Remove Position</button>
                         </div>
                     </form>
 
@@ -192,7 +200,7 @@
                             </div>
                         </div>
                         <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="submit">Remove Session</button>
+                            <button class="red-btn" type="submit">Remove Session</button>
                         </div>
                     </form>
 

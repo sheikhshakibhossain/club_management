@@ -110,6 +110,18 @@
                         </div>
                     </form>
 
+                    <form method="POST" action="raw_query.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Raw Query</label>
+                                <input type="text" name="query" class="form-control" placeholder="" value="" required>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Execute</button>
+                        </div>
+                    </form>
+
                 </div>
 
 

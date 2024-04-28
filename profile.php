@@ -183,7 +183,7 @@
 <br> <br>
 <span>
     <a href="newbie.php" class="light-purple-btn">
-        <i class="fa fa-plus"></i>&nbsp;Vagabond
+        <i class="fa fa-plus"></i>&nbsp;Newbie
     </a>
     
     <a href="logout.php" class="light-red-btn" style="margin-left: 120px;">

@@ -102,49 +102,59 @@
             <form action="register_club.php" method="POST">
                 <input type="text" name="person_id" value="<?php echo $id; ?>" readonly style="display: none;">
 
+
                 <select name="club" required>
-                    <option value="" disabled selected>Club</option>
-                    <option value="1">Robotics Club</option>
-                    <option value="2">Computer Club</option>
-                    <option value="3">App Forum</option>
-                    <option value="4">Sports Club</option>
-                    <option value="5">Cultural Club</option>
-                    <option value="6">UIU ELECTRICAL & ELECTRONICS CLUB</option>
-                    
+                    <option value="" disabled selected>Select Club</option>
+                    <?php 
+                        require_once('dbconfig.php');
+                        $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
+                        
+                        $query = "SELECT id, name FROM club";
+                        $result = mysqli_query($connect, $query);
+
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $id = $row['id'];
+                            $name = $row['name'];
+                            echo "<option value=\"$id\">$name</option>";
+                        }
+                    ?>
+
                 </select>
 
                 <select name="club_position" required>
                     <option value="" disabled selected>Position</option>
-                    <option value="1">President</option>
-                    <option value="2">Vice President</option>
-                    <option value="3">General Secretary</option>
-                    <option value="4">Treasurer</option>
-                    <option value="5">Secretary, Research and Development</option>
-                    <option value="6">Secretary, Event Management</option>
-                    <option value="7">Secretary, Branding and promotion</option>
-                    <option value="8">Secretary, Public Relations</option>
-                    <option value="9">Secretary, Graphic Designs</option>
-                    <option value="10">Joint Secretary, Research and Development</option>
-                    <option value="11">Joint Secretary, Event Management</option>
-                    <option value="12">Joint Secretary, Branding and Promotions</option>
-                    <option value="13">Webmaster</option>
-                    <option value="14">Consultant, Technical</option>
-                    <option value="15">Executive, Research and Development</option>
-                    <option value="16">Mentor</option>
-                    <option value="17">General Member</option>
-                    
-                </select>
+                    <?php 
+                        require_once('dbconfig.php');
+                        $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
+                        
+                        $query = "SELECT id, name FROM club_position";
+                        $result = mysqli_query($connect, $query);
+
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $id = $row['id'];
+                            $name = $row['name'];
+                            echo "<option value=\"$id\">$name</option>";
+                        }
+                    ?>
 
                 </select>
 
                 <select name="sessions" required>
                     <option value="" disabled selected>Session</option>
-                    <option value="1">sept. 2019 - sept. 2020</option>
-                    <option value="2">sept. 2020 - sept. 2021</option>
-                    <option value="3">sept. 2021 - sept. 2022</option>
-                    <option value="4">sept. 2022 - sept. 2023</option>
-                    <option value="5">sept. 2023 - sept. 2024</option>
-                    <!-- Add more options as needed -->
+                    <?php 
+                        require_once('dbconfig.php');
+                        $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
+                        
+                        $query = "SELECT id, name FROM session";
+                        $result = mysqli_query($connect, $query);
+
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $id = $row['id'];
+                            $name = $row['name'];
+                            echo "<option value=\"$id\">$name</option>";
+                        }
+                    ?>
+
                 </select>
 
                 <button type="submit">Submit</button>

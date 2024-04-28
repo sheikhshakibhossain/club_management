@@ -77,6 +77,31 @@
                         </div>
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Add Club</button></div>
                     </form>
+
+                    <form method="POST" action="add_city.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">City Name</label>
+                                <input type="text" name="city_name" class="form-control" placeholder="" value="" required>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Add City</button>
+                        </div>
+                    </form>
+
+                    <form method="POST" action="add_club_position.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Club Position Title <Title></Title></label>
+                                <input type="text" name="club_position" class="form-control" placeholder="" value="" required>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Add Position</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
 
@@ -123,19 +148,6 @@
                         </div>
                     </form>
 
-
-                    <form method="POST" action="add_city.php">
-                        <div class="row mt-3">
-                            <div class="col-md-12">
-                                <label class="labels">City Name</label>
-                                <input type="text" name="city_name" class="form-control" placeholder="" value="" required>
-                            </div>
-                        </div>
-                        <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="submit">Add City</button>
-                        </div>
-                    </form>
-
                     <form method="POST" action="remove_city.php">
                         <div class="row mt-3">
                             <div class="col-md-12">
@@ -154,7 +166,7 @@
             </div>
 
 
-            <div class="col-md-5 border-right">
+            <!-- <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Something</h4>
@@ -168,7 +180,7 @@
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Club</button></div>
                     </form>
                 </div>
-            </div>
+            </div> -->
 
             <!-- <div class="col-md-5 border-right">
                 <div class="p-3 py-5">

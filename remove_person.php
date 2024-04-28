@@ -45,6 +45,16 @@
         if ($person_check_status == 0) {
             echo "Person does not exists";
         } else {
+
+            // delete from friends table
+            $query = "DELETE FROM friend WHERE person_id = '$person_id' OR friend_id = '$person_id'";
+            $result = mysqli_query($connect, $query);
+            if ($result) {
+                echo "Person Removed from Friend table";
+            } else {
+                echo "Error: " . mysqli_error($connect);
+            }
+            echo "<br>";
             
             $query = "DELETE FROM person WHERE id = '$person_id'";
             $result = mysqli_query($connect, $query);

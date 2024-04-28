@@ -24,6 +24,7 @@ if (isset($_GET['id'])) {
     
     while ($rows = mysqli_fetch_array($results)) {
         extract($rows);
+        $user_name = $rows['name'];
     }
     
     $city_result = mysqli_query($connect, "SELECT name FROM `city` WHERE id = '$city'")
@@ -82,6 +83,11 @@ if (isset($_GET['id'])) {
 
     $friend_query = mysqli_query($connect, "SELECT count(*) FROM friend WHERE person_id = '$person_id' AND friend_id = '$friend_id'");
     $friend_count = mysqli_fetch_array($friend_query)[0];
+
+
+    $logged_user_id = $_SESSION['user_id'];
+    $logged_user_name_query = mysqli_query($connect, "SELECT name FROM person WHERE id = '$logged_user_id'");
+    $logged_user_name = mysqli_fetch_array($logged_user_name_query)[0];
 
 
 } else {
@@ -195,6 +201,22 @@ if (isset($_GET['id'])) {
                 </a>
             </span>
             <?php endif; ?>
+
+
+            <div class="p-3 py-5">
+                <span>
+                    <form id="emailForm">
+                        <textarea id="emailBody" rows="5" cols="40" placeholder="Message ..."></textarea>
+                        <button type="button" onclick="
+                            var email = '<?php echo $email; ?>';  
+                            var body = document.getElementById('emailBody').value;  
+                            var subject = '<?php echo $logged_user_name; ?> sent a message from Club and Alumni Social Platform'; 
+                            var mailtoLink = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);  // Construct the mailto link
+                            window.location.href = mailtoLink; 
+                        ">Send Email</button>
+                    </form>
+                </span>
+            </div>
 
         </div>
     </div>

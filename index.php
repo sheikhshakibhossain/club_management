@@ -63,7 +63,7 @@
             <br><br><br><br>
             <h3>Not signed in yet ?</h3>
             <div class="button-container">
-                <button onclick="redirectTo('register.html')">Create Account</button>
+                <button onclick="redirectTo('register_page.php')">Create Account</button>
             </div>
             <br><br><br>
             <h3>Already signed in ?</h3>

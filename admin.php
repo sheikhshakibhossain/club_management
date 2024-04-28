@@ -67,7 +67,7 @@
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Add</h4>
+                        <h4 class="text-right"></h4>
                     </div>
                     <form method="POST" action="add_club.php">
                         <div class="row mt-3">
@@ -83,8 +83,21 @@
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Remove</h4>
+                        <h4 class="text-right"></h4>
                     </div>
+
+                    <form method="POST" action="raw_query.php">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Raw Query</label>
+                                <input type="text" name="query" class="form-control" placeholder="" value="" required>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Execute</button>
+                        </div>
+                    </form>
+                    
                     <form method="POST" action="remove_club.php">
                         <div class="row mt-3">
                             <div class="col-md-12">
@@ -110,17 +123,6 @@
                         </div>
                     </form>
 
-                    <form method="POST" action="raw_query.php">
-                        <div class="row mt-3">
-                            <div class="col-md-12">
-                                <label class="labels">Raw Query</label>
-                                <input type="text" name="query" class="form-control" placeholder="" value="" required>
-                            </div>
-                        </div>
-                        <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="submit">Execute</button>
-                        </div>
-                    </form>
 
                     <form method="POST" action="add_city.php">
                         <div class="row mt-3">

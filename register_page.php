@@ -1,3 +1,7 @@
+<?php
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,24 +115,48 @@
                 
                 <select name="country" required>
                     <option value="" disabled selected>Select Country</option>
-                    <option value="1">Bangladesh</option>
-                    <option value="2">India</option>
-                    <option value="3">Pakistan</option>
-                    <!-- Add more options as needed -->
+                    <?php 
+                        require_once('dbconfig.php');
+                        $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
+                        
+                        $query = "SELECT id, name FROM country";
+                        $result = mysqli_query($connect, $query);
+
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $id = $row['id'];
+                            $name = $row['name'];
+                            echo "<option value=\"$id\">$name</option>";
+                        }
+                    ?>
+                </select>
+
+
+
+
+
                 </select>
 
                 <select name="city" required>
                     <option value="" disabled selected>Select City</option>
-                    <option value="1">Dhaka</option>
-                    <option value="2">Khulna</option>
-                    <option value="5">Barishal</option>
-                    <!-- Add more options as needed -->
+                    <?php 
+                        require_once('dbconfig.php');
+                        $connect = mysqli_connect(HOST, USER, PASS, DB) or die("Can not connect");
+                        
+                        $query = "SELECT id, name FROM city";
+                        $result = mysqli_query($connect, $query);
+
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $id = $row['id'];
+                            $name = $row['name'];
+                            echo "<option value=\"$id\">$name</option>";
+                        }
+                ?>
+
                 </select>
 
                 <input type="text" name="batch" placeholder="Batch" required>
                 <input type="password" name="password" placeholder="Password" required>
 
-                <!-- File input for image upload -->
                 <label for="fileToUpload" class="custom-file-upload">Upload Profile Picture</label>
                 <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*" required>
 
